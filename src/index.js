@@ -4,9 +4,10 @@ import { createStore } from "redux";
 
 import "./index.css";
 import App from "./components/App";
-import movie from "./reducers";
+import combineReducers from "./reducers";
 
-const store = createStore(movie);
+const store = createStore(combineReducers);
+console.log(combineReducers);
 console.log(store);
 ReactDOM.render(
   <React.StrictMode>

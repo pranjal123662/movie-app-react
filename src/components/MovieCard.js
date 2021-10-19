@@ -19,10 +19,8 @@ class MovieCard extends Component {
 
   handleUnFavClick = () => {
     const { movie } = this.props;
+    console.log("inside unfav", movie);
     this.props.dispatch(removefromfav(movie));
-    this.setState({
-      fav_mov: false,
-    });
   };
 
   render() {
