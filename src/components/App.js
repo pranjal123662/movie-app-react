@@ -18,16 +18,22 @@ class App extends React.Component {
   };
   render() {
     // const movies = this.props.store.getState();
-    const { movies } = this.props.store.getState();
+    const { movies, search } = this.props.store.getState();
     console.log("Inside", movies);
     const { list } = movies;
     const { favourite } = movies;
     const { setFav } = movies;
+    const { result } = search;
+    const { showSearchResults } = search;
     const display = setFav ? favourite : list;
 
     return (
       <div className="App">
-        <Navbar />
+        <Navbar
+          dispatch={this.props.store.dispatch}
+          result={result}
+          showSearchResults={showSearchResults}
+        />
         <div className="main">
           <div className="tabs">
             <div
@@ -58,7 +64,9 @@ class App extends React.Component {
               );
             })}
           </div>
-          {display.length === 0 && <div>No movies in the favourites!</div>}
+          {display.length === 0 && (
+            <div className="no-movies">No movies in the favourites!</div>
+          )}
         </div>
         {/* {!this.state.loadingForFavourite }
           <div className="list">
